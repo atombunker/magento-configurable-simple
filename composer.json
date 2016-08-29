@@ -1,5 +1,5 @@
 {
-  "name": "magento-configurable-simple",
+  "name": "OrganicInternet/SimpleConfigurableProducts",
   "type":"magento-module",
   "require": {
     "php": ">=5.3",
