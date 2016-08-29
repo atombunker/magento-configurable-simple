@@ -1,5 +1,5 @@
 {
-  "name": "OrganicInternet/SimpleConfigurableProducts",
+  "name": "borasocom-team/magento-configurable-simple",
   "type":"magento-module",
   "require": {
     "php": ">=5.3",
