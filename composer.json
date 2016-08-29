@@ -1,5 +1,5 @@
 {
-  "name": "borasocom-team/magento-configurable-simple",
+  "name": "magento-configurable-simple",
   "type":"magento-module",
   "require": {
     "php": ">=5.3",
