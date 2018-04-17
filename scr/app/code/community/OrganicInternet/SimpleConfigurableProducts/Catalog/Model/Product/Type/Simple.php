@@ -15,6 +15,13 @@ class OrganicInternet_SimpleConfigurableProducts_Catalog_Model_Product_Type_Simp
         if ($br) {
             $brData = unserialize($br->getValue());
             if(!empty($brData['cpid'])) {
+
+                //fix zane per semplice abbinato a più configurabili
+                if(is_array($brData['cpid'])) {
+
+                    $brData['cpid'] = array_pop($brData['cpid']);
+                }
+
                 return $brData['cpid'];
             }
         }
@@ -34,6 +41,11 @@ class OrganicInternet_SimpleConfigurableProducts_Catalog_Model_Product_Type_Simp
 
     public function hasConfigurableProductParentId()
     {
+        if($this->getProduct()->getId() == 7240) {
+
+            $a=1;
+        }
+
         $cpid = $this->getCpid();
         Mage::log("cpid: ". $cpid);
         return !empty($cpid);

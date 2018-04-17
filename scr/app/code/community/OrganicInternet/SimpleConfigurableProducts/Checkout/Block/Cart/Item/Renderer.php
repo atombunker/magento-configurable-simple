@@ -12,6 +12,13 @@ class OrganicInternet_SimpleConfigurableProducts_Checkout_Block_Cart_Item_Render
         try {
             $buyRequest = unserialize($this->getItem()->getOptionByCode('info_buyRequest')->getValue());
             if(!empty($buyRequest['cpid'])) {
+
+                //fix zane per semplice abbinato a più configurabili
+                if(is_array($buyRequest['cpid'])) {
+
+                    $buyRequest['cpid'] = array_pop($buyRequest['cpid']);
+                }
+
                 return $buyRequest['cpid'];
             }
         } catch (Exception $e) {
