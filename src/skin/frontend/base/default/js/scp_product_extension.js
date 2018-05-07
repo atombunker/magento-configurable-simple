@@ -282,15 +282,24 @@ Product.Config.prototype.showCustomOptionsBlock = function(productId, parentId) 
         //$$('span.scp-please-wait').each(function(el) {el.show()});
 
         //prodForm.getElements().each(function(el) {el.disable()});
-        new Ajax.Updater('SCPcustomOptionsDiv', coUrl, {
-          method: 'get',
-          evalScripts: true,
-          onComplete: function() {
-              $$('span.scp-please-wait').each(function(el) {el.hide()});
-              Effect.Fade('SCPcustomOptionsDiv', { duration: 0.5, from: 0.5, to: 1 });
-              //prodForm.getElements().each(function(el) {el.enable()});
-          }
-        });
+        var oiReq =
+
+            new Ajax.Updater('SCPcustomOptionsDiv', coUrl, {
+              method: 'get',
+              evalScripts: true,
+              onComplete: function() {
+                  $$('span.scp-please-wait').each(function(el) {el.hide()});
+                  Effect.Fade('SCPcustomOptionsDiv', { duration: 0.5, from: 0.5, to: 1 });
+                  //prodForm.getElements().each(function(el) {el.enable()});
+              }
+            });
+
+
+        if (typeof CONFIGURABLE_AJAX_REQUESTS !== 'undefined') {
+
+            CONFIGURABLE_AJAX_REQUESTS.push(oiReq);
+        }
+
     } else {
         $('SCPcustomOptionsDiv').innerHTML = '';
         try{window.opConfig = new Product.Options([]);} catch(e){}
